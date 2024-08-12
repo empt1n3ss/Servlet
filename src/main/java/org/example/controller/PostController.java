@@ -11,7 +11,7 @@ import java.io.Reader;
 
 public class PostController {
   private static final String APPLICATION_JSON = "application/json";
-  private final Gson gson = new Gson();
+  private static final Gson gson = new Gson();
 
   private final PostService service;
 
