@@ -1,47 +1,16 @@
 package org.example.repository;
 
-import org.example.exception.NotFoundException;
 import org.example.model.Post;
-import org.springframework.stereotype.Repository;
 
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
+import java.util.Optional;
 
-// Stub
-@Repository
-public class PostRepository {
-  private static final String POST_NOT_FOUND_MESSAGE = "Post not found";
+public interface PostRepository {
+    List<Post> all();
 
-  private final Map<Long, Post> posts = new ConcurrentHashMap<>();
-  private final AtomicLong idCounter = new AtomicLong();
+    Optional<Post> getById(long id);
 
-  public List<Post> all() {
-    return new ArrayList<>(posts.values());
-  }
+    Post save(Post post);
 
-  public Optional<Post> getById(long id) {
-    return Optional.ofNullable(posts.get(id));
-  }
-
-  public Post save(Post post) {
-    if (post.getId() == 0) {
-      long id = idCounter.incrementAndGet();
-      post.setId(id);
-      posts.put(id, post);
-      return post;
-    } else {
-      if (posts.containsKey(post.getId())) {
-        posts.put(post.getId(), post);
-        return post;
-      } else {
-        throw new NotFoundException(POST_NOT_FOUND_MESSAGE);
-      }
-    }
-  }
-  public void removeById(long id) {
-    if (posts.remove(id) == null) {
-      throw new NotFoundException(POST_NOT_FOUND_MESSAGE);
-    }
-  }
+    void removeById(long id);
 }
