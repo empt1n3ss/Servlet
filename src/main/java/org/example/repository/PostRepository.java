@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 // Stub
 public class PostRepository {
+  private static final String POST_NOT_FOUND_MESSAGE = "Post not found";
+
   private final Map<Long, Post> posts = new ConcurrentHashMap<>();
   private final AtomicLong idCounter = new AtomicLong();
 
@@ -31,13 +33,13 @@ public class PostRepository {
         posts.put(post.getId(), post);
         return post;
       } else {
-        throw new NotFoundException("Post not found");
+        throw new NotFoundException(POST_NOT_FOUND_MESSAGE);
       }
     }
   }
   public void removeById(long id) {
     if (posts.remove(id) == null) {
-      throw new NotFoundException("Post not found");
+      throw new NotFoundException(POST_NOT_FOUND_MESSAGE);
     }
   }
 }
