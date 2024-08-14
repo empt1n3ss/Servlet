@@ -1,6 +1,6 @@
 package org.example.servlet;
 
-import org.example.controller.JavaConfig;
+import org.example.config.JavaConfig;
 import org.example.controller.PostController;
 import org.example.repository.PostRepository;
 import org.example.service.PostService;

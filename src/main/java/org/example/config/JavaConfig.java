@@ -1,5 +1,6 @@
-package org.example.controller;
+package org.example.config;
 
+import org.example.controller.PostController;
 import org.example.repository.PostRepository;
 import org.example.repository.PostRepositoryStubImpl;
 import org.example.service.PostService;

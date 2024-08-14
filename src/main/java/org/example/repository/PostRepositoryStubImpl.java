@@ -9,7 +9,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 // Stub
-@Repository
 public class PostRepositoryStubImpl implements PostRepository {
   private static final String POST_NOT_FOUND_MESSAGE = "Post not found";
 
